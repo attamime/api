@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<a href="{% url 'add' %}">Add Student</a>
+
+<hr>
+
+{% for s in stud %}
+
+<p>
+    {{ s.name }}
+
+    <a href="{% url 'edit' s.id %}">Edit</a>
+
+    <a href="{% url 'delete' s.id %}">Delete</a>
+</p>
+
+{% endfor %}
+
+{% endblock %}

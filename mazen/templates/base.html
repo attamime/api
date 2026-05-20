@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}Student System{% endblock %}</title>
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<nav>
+
+    <a href="{% url 'home' %}">Home</a>
+
+    {% if user.is_authenticated %}
+
+        <!-- إذا المستخدم مسجل دخول -->
+        <a href="{% url 'logout' %}">Logout</a>
+
+        <span style="margin-left: 10px;">
+            Welcome, {{ user.username }}
+        </span>
+
+    {% else %}
+
+        <!-- إذا المستخدم غير مسجل دخول -->
+        <a href="{% url 'login' %}">Login</a>
+        <a href="{% url 'register' %}">Register</a>
+
+    {% endif %}
+
+</nav>
+
+<hr>
+
+<!-- ================= CONTENT ================= -->
+{% block content %}
+{% endblock %}
+
+</body>
+</html>
